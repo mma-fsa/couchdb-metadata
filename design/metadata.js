@@ -1,0 +1,37 @@
+{
+  "_id":"_design/metadata",
+  "_rev":"65-b5e454d99da010e766db436cfb8a6fe6",
+  "lists":{
+    "collate":"#",
+    "distinct_keys":"#"
+  },
+  "rewrites":[
+    {
+      "from":"/makeModels/:make",
+      "to":"/_list/collate/make_models"
+    },
+    {
+      "from":"/makes/",
+      "to":"/_list/distinct_keys/makes?group=true"
+    }
+  ],
+  "views":{
+    "engine_data":{
+      "map":"#"
+    },
+    "make_model_ids":{
+      "map":"#"
+    },
+    "make_models":{
+      "map":"#"
+    },
+    "makes":{
+      "map":"#",
+      "reduce":"#"
+    },
+    "names":{
+      "map":"#",
+      "reduce":"#"
+    }
+  }
+}
