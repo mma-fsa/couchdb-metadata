@@ -6,7 +6,7 @@ function(head, req) {
       if (!collated[row.key]) {
         collated[row.key] = []
       }
-      collated[row.key].push(row)
+      collated[row.key].push(row.value)
     }
     return toJSON(collated)
   })  

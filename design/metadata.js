@@ -1,22 +1,43 @@
 {
   "_id":"_design/metadata",
-  "_rev":"65-b5e454d99da010e766db436cfb8a6fe6",
+  "_rev":"3-3d8c346a40f5a0db1fb8460555b6cf09",
   "lists":{
     "collate":"#",
     "distinct_keys":"#"
   },
   "rewrites":[
     {
-      "from":"/makeModels/:make",
+      "from":"/makeModels/",
+      "to":"/_list/collate/make_models"
+    },
+    {
+      "from":"/makeModels/:make/",
+      "query":{
+        "key":":make"
+      },
       "to":"/_list/collate/make_models"
     },
     {
       "from":"/makes/",
-      "to":"/_list/distinct_keys/makes?group=true"
+      "query":{
+        "group":"true"
+      },
+      "to":"/_list/distinct_keys/makes"
+    },
+    {
+      "from":"/engines/:mmid",
+      "query":{
+        "key":":mmid"
+      },
+      "to":"/_view/engines/"
     }
   ],
   "views":{
-    "engine_data":{
+    "doc_types":{
+      "map":"#",
+      "reduce":"#"
+    },
+    "engines":{
       "map":"#"
     },
     "make_model_ids":{
@@ -26,10 +47,6 @@
       "map":"#"
     },
     "makes":{
-      "map":"#",
-      "reduce":"#"
-    },
-    "names":{
       "map":"#",
       "reduce":"#"
     }
