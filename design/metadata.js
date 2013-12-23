@@ -1,8 +1,9 @@
 {
   "_id":"_design/metadata",
-  "_rev":"3-3d8c346a40f5a0db1fb8460555b6cf09",
+  "_rev":"16-2ee7a7e22bb8532617befc7b35ebb5b4",
   "lists":{
     "collate":"#",
+    "distinct_collate":"#",
     "distinct_keys":"#"
   },
   "rewrites":[
@@ -29,7 +30,24 @@
       "query":{
         "key":":mmid"
       },
-      "to":"/_view/engines/"
+      "to":"/_list/collate/engines/"
+    },
+    {
+      "from":"/engines/:mmid/:yr",
+      "query":{
+        "key":[
+          ":mmid",
+          ":yr"
+        ]
+      },
+      "to":"/_list/collate/engines/"
+    },
+    {
+      "from":"/years/:mmid",
+      "query":{
+        "key":":mmid"
+      },
+      "to":"/_list/distinct_collate/years/"
     }
   ],
   "views":{
@@ -49,6 +67,9 @@
     "makes":{
       "map":"#",
       "reduce":"#"
+    },
+    "years":{
+      "map":"#"
     }
   }
 }
