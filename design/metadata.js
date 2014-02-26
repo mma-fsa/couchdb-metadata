@@ -1,9 +1,10 @@
 {
   "_id":"_design/metadata",
-  "_rev":"21-74b210ec6d1c061b6452e05af064f289",
+  "_rev":"4-333e0f7d2cae73cb44b7e25e69aa5b66",
   "lists":{
     "collate":"#",
     "distinct_collate":"#",
+    "distinct_engines":"#",
     "distinct_keys":"#"
   },
   "rewrites":[
@@ -30,7 +31,7 @@
       "query":{
         "key":":mmid"
       },
-      "to":"/_list/collate/engines/"
+      "to":"/_list/distinct_engines/engines/"
     },
     {
       "from":"/engines/:mmid/:yr",
@@ -40,7 +41,7 @@
           ":yr"
         ]
       },
-      "to":"/_list/collate/engines/"
+      "to":"/_list/distinct_engines/engines/"
     },
     {
       "from":"/years/:mmid",
